@@ -8,14 +8,20 @@ import pandas as pd
 import streamlit as st
 from app.database import fetch_events
 from app.classifier import analyst_alert
+from scripts.ingest import main as run_ingest
 
 st.set_page_config(page_title="LATAM OSINT Monitor", layout="wide")
 st.title("LATAM OSINT Monitor — MVP")
 st.caption("Monitoreo inicial desde periódicos, RSS y GDELT. Requiere revisión analítica humana.")
 
 rows = [dict(r) for r in fetch_events(1000)]
+
 if not rows:
-    st.warning("No hay eventos todavía. Ejecuta: python scripts/ingest.py")
+    st.warning("No hay eventos todavía.")
+    if st.button("Cargar noticias ahora"):
+        with st.spinner("Descargando noticias desde RSS y GDELT..."):
+            run_ingest()
+        st.rerun()
     st.stop()
 
 df = pd.DataFrame(rows)
