@@ -1,0 +1,37 @@
+# Fuentes iniciales. Puedes agregar/quitar feeds.
+# Algunos sitios cambian sus URLs RSS con el tiempo; si una fuente falla, la app la salta y continúa.
+
+rss_feeds:
+  - name: BBC Mundo
+    country: Regional
+    url: https://feeds.bbci.co.uk/mundo/rss.xml
+  - name: DW Español
+    country: Regional
+    url: https://rss.dw.com/rdf/rss-sp-all
+  - name: France24 Español
+    country: Regional
+    url: https://www.france24.com/es/rss
+  - name: Infobae América
+    country: Regional
+    url: https://www.infobae.com/america/rss.xml
+  - name: La Nación Argentina
+    country: Argentina
+    url: https://www.lanacion.com.ar/arc/outboundfeeds/rss/
+  - name: El Tiempo Colombia
+    country: Colombia
+    url: https://www.eltiempo.com/rss/colombia.xml
+  - name: El Comercio Perú
+    country: Peru
+    url: https://elcomercio.pe/arcio/rss/
+  - name: El Universal México
+    country: Mexico
+    url: https://www.eluniversal.com.mx/rss.xml
+
+gdelt:
+  enabled: true
+  queries:
+    - "protesta OR bloqueo OR paro OR huelga OR disturbios"
+    - "seguridad OR violencia OR crimen organizado OR narcotráfico"
+    - "puerto OR mina OR carretera OR frontera OR energía"
+  max_records_per_query: 50
+  timespan: "24h"
